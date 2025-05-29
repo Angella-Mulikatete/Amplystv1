@@ -2,7 +2,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Star, Users, TrendingUp, MessageSquare, CreditCard, Zap, Target, BarChart3, Shield } from "lucide-react";
+import { Star, Users, TrendingUp, MessageSquare, CreditCard, Zap, Target, BarChart3, Shield, CheckCircle } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Index = () => {
@@ -20,7 +20,7 @@ const Index = () => {
           <div className="hidden md:flex items-center space-x-8">
             <a href="#features" className="text-gray-600 hover:text-purple-600 transition-colors">Features</a>
             <a href="#how-it-works" className="text-gray-600 hover:text-purple-600 transition-colors">How It Works</a>
-            <a href="#testimonials" className="text-gray-600 hover:text-purple-600 transition-colors">Testimonials</a>
+            <a href="#success-stories" className="text-gray-600 hover:text-purple-600 transition-colors">Success Stories</a>
           </div>
           <div className="flex items-center space-x-4">
             <Link to="/login">
@@ -41,220 +41,187 @@ const Index = () => {
       <section className="py-20 px-4">
         <div className="container mx-auto text-center">
           <Badge className="mb-6 bg-purple-100 text-purple-700 hover:bg-purple-100">
-            🚀 AI-Powered Influencer Marketing
+            🚀 Smart Influencer Collaboration Platform
           </Badge>
           <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
-            Connect. Collaborate. 
+            Connect Small Brands with 
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-indigo-600">
-              {" "}Amplify.
+              {" "}Nano & Micro Influencers
             </span>
           </h1>
           <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-            The ultimate platform for influencers, brands, and agencies to create impactful partnerships 
-            with AI-powered matching, real-time analytics, and seamless collaboration tools.
+            Amplyst empowers nano and micro-influencers to monetize their content while helping small brands 
+            and startups discover authentic partnerships that drive real results.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
             <Link to="/register?role=influencer">
               <Button size="lg" className="bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 px-8">
-                Join as Influencer
+                Join as Creator
               </Button>
             </Link>
             <Link to="/register?role=brand">
               <Button size="lg" variant="outline" className="border-purple-300 text-purple-700 hover:bg-purple-50 px-8">
-                Start as Brand
+                Find Influencers
               </Button>
             </Link>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
             <div className="text-center">
-              <div className="text-3xl font-bold text-purple-600">10K+</div>
-              <div className="text-gray-600">Active Influencers</div>
+              <div className="text-3xl font-bold text-purple-600">1K-100K</div>
+              <div className="text-gray-600">Follower Range Focus</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-indigo-600">500+</div>
-              <div className="text-gray-600">Partner Brands</div>
+              <div className="text-3xl font-bold text-indigo-600">SMEs</div>
+              <div className="text-gray-600">& Startups Supported</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-purple-600">$2M+</div>
-              <div className="text-gray-600">Campaign Value</div>
+              <div className="text-3xl font-bold text-purple-600">5%+</div>
+              <div className="text-gray-600">Avg Engagement Rate</div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Features Section */}
-      <section id="features" className="py-20 px-4 bg-white">
+      {/* Problem & Solution */}
+      <section className="py-20 px-4 bg-white">
         <div className="container mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Powerful Features</h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Everything you need to run successful influencer marketing campaigns
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">Solving Real Problems</h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Small brands struggle to find the right influencers, while nano and micro-influencers 
+              lack access to brand opportunities. We're changing that.
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <Card className="hover:shadow-lg transition-shadow">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <Card className="p-8">
               <CardHeader>
-                <Zap className="h-10 w-10 text-purple-600 mb-2" />
-                <CardTitle>AI-Powered Matching</CardTitle>
-                <CardDescription>
-                  Our advanced AI matches influencers with brands based on audience, engagement, and campaign goals.
-                </CardDescription>
+                <CardTitle className="text-2xl text-red-600 mb-4">The Problem</CardTitle>
               </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="flex items-start space-x-3">
+                  <div className="w-2 h-2 bg-red-500 rounded-full mt-2"></div>
+                  <span className="text-gray-700">Small brands can't find relevant nano/micro influencers</span>
+                </div>
+                <div className="flex items-start space-x-3">
+                  <div className="w-2 h-2 bg-red-500 rounded-full mt-2"></div>
+                  <span className="text-gray-700">Campaigns scattered across DMs and spreadsheets</span>
+                </div>
+                <div className="flex items-start space-x-3">
+                  <div className="w-2 h-2 bg-red-500 rounded-full mt-2"></div>
+                  <span className="text-gray-700">No structured way to track performance or ROI</span>
+                </div>
+                <div className="flex items-start space-x-3">
+                  <div className="w-2 h-2 bg-red-500 rounded-full mt-2"></div>
+                  <span className="text-gray-700">Smaller creators lack professional opportunities</span>
+                </div>
+              </CardContent>
             </Card>
-            <Card className="hover:shadow-lg transition-shadow">
+            <Card className="p-8">
               <CardHeader>
-                <BarChart3 className="h-10 w-10 text-indigo-600 mb-2" />
-                <CardTitle>Real-Time Analytics</CardTitle>
-                <CardDescription>
-                  Track campaign performance with detailed analytics and insights across all social platforms.
-                </CardDescription>
+                <CardTitle className="text-2xl text-green-600 mb-4">Our Solution</CardTitle>
               </CardHeader>
-            </Card>
-            <Card className="hover:shadow-lg transition-shadow">
-              <CardHeader>
-                <MessageSquare className="h-10 w-10 text-purple-600 mb-2" />
-                <CardTitle>Seamless Communication</CardTitle>
-                <CardDescription>
-                  Built-in messaging system for smooth collaboration between influencers and brands.
-                </CardDescription>
-              </CardHeader>
-            </Card>
-            <Card className="hover:shadow-lg transition-shadow">
-              <CardHeader>
-                <CreditCard className="h-10 w-10 text-indigo-600 mb-2" />
-                <CardTitle>Secure Payments</CardTitle>
-                <CardDescription>
-                  Automated payment processing with milestone tracking and secure escrow services.
-                </CardDescription>
-              </CardHeader>
-            </Card>
-            <Card className="hover:shadow-lg transition-shadow">
-              <CardHeader>
-                <Target className="h-10 w-10 text-purple-600 mb-2" />
-                <CardTitle>Campaign Management</CardTitle>
-                <CardDescription>
-                  Comprehensive tools to create, manage, and optimize influencer marketing campaigns.
-                </CardDescription>
-              </CardHeader>
-            </Card>
-            <Card className="hover:shadow-lg transition-shadow">
-              <CardHeader>
-                <Shield className="h-10 w-10 text-indigo-600 mb-2" />
-                <CardTitle>Contract Protection</CardTitle>
-                <CardDescription>
-                  Legal contract templates and e-signature integration for secure partnerships.
-                </CardDescription>
-              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="flex items-start space-x-3">
+                  <CheckCircle className="w-5 h-5 text-green-500 mt-1" />
+                  <span className="text-gray-700">Curated discovery of nano & micro influencers</span>
+                </div>
+                <div className="flex items-start space-x-3">
+                  <CheckCircle className="w-5 h-5 text-green-500 mt-1" />
+                  <span className="text-gray-700">Centralized campaign management platform</span>
+                </div>
+                <div className="flex items-start space-x-3">
+                  <CheckCircle className="w-5 h-5 text-green-500 mt-1" />
+                  <span className="text-gray-700">Real-time analytics and performance tracking</span>
+                </div>
+                <div className="flex items-start space-x-3">
+                  <CheckCircle className="w-5 h-5 text-green-500 mt-1" />
+                  <span className="text-gray-700">Professional tools for smaller creators to grow</span>
+                </div>
+              </CardContent>
             </Card>
           </div>
         </div>
       </section>
 
-      {/* Role-Based Value Props */}
+      {/* Personas Section */}
       <section className="py-20 px-4 bg-gradient-to-br from-purple-50 to-indigo-50">
         <div className="container mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Built for Everyone</h2>
-            <p className="text-xl text-gray-600">Tailored solutions for influencers, brands, and agencies</p>
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">Built for You</h2>
+            <p className="text-xl text-gray-600">Tailored solutions for creators and brands at every stage</p>
           </div>
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {/* Influencers */}
-            <Card className="p-8 hover:shadow-xl transition-shadow bg-white">
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
+            {/* Nano Influencers */}
+            <Card className="p-6 hover:shadow-xl transition-shadow bg-white">
               <CardHeader className="text-center pb-4">
                 <Users className="h-12 w-12 text-purple-600 mx-auto mb-4" />
-                <CardTitle className="text-2xl">For Influencers</CardTitle>
-                <CardDescription className="text-lg">
-                  Monetize your content and grow your personal brand
+                <CardTitle className="text-xl">Nano-Influencers</CardTitle>
+                <CardDescription className="text-sm">
+                  1K-10K followers
                 </CardDescription>
               </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-purple-600 rounded-full"></div>
-                  <span className="text-gray-700">Find brand partnerships that match your audience</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-purple-600 rounded-full"></div>
-                  <span className="text-gray-700">Track your performance across platforms</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-purple-600 rounded-full"></div>
-                  <span className="text-gray-700">Secure payments and contract protection</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-purple-600 rounded-full"></div>
-                  <span className="text-gray-700">Build long-term brand relationships</span>
-                </div>
-                <Link to="/register?role=influencer" className="block pt-4">
-                  <Button className="w-full bg-purple-600 hover:bg-purple-700">
-                    Join as Influencer
+              <CardContent className="space-y-3">
+                <p className="text-sm text-gray-600 mb-4">Eager to monetize influence and build brand presence with highly engaged, close-knit audiences.</p>
+                <Link to="/register?role=influencer" className="block">
+                  <Button className="w-full bg-purple-600 hover:bg-purple-700 text-sm">
+                    Start Earning
                   </Button>
                 </Link>
               </CardContent>
             </Card>
 
-            {/* Brands */}
-            <Card className="p-8 hover:shadow-xl transition-shadow bg-white">
+            {/* Micro Influencers */}
+            <Card className="p-6 hover:shadow-xl transition-shadow bg-white">
               <CardHeader className="text-center pb-4">
                 <TrendingUp className="h-12 w-12 text-indigo-600 mx-auto mb-4" />
-                <CardTitle className="text-2xl">For Brands</CardTitle>
-                <CardDescription className="text-lg">
-                  Scale your marketing with authentic influencer partnerships
+                <CardTitle className="text-xl">Micro-Influencers</CardTitle>
+                <CardDescription className="text-sm">
+                  10K-100K followers
                 </CardDescription>
               </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-indigo-600 rounded-full"></div>
-                  <span className="text-gray-700">AI-powered influencer discovery</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-indigo-600 rounded-full"></div>
-                  <span className="text-gray-700">Campaign ROI tracking and analytics</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-indigo-600 rounded-full"></div>
-                  <span className="text-gray-700">Streamlined collaboration tools</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-indigo-600 rounded-full"></div>
-                  <span className="text-gray-700">Automated payment and contract management</span>
-                </div>
-                <Link to="/register?role=brand" className="block pt-4">
-                  <Button className="w-full bg-indigo-600 hover:bg-indigo-700">
-                    Start as Brand
+              <CardContent className="space-y-3">
+                <p className="text-sm text-gray-600 mb-4">Established creators with niche communities, trusted voices in specific interest areas.</p>
+                <Link to="/register?role=influencer" className="block">
+                  <Button className="w-full bg-indigo-600 hover:bg-indigo-700 text-sm">
+                    Scale Partnerships
+                  </Button>
+                </Link>
+              </CardContent>
+            </Card>
+
+            {/* SMEs & Brands */}
+            <Card className="p-6 hover:shadow-xl transition-shadow bg-white">
+              <CardHeader className="text-center pb-4">
+                <Target className="h-12 w-12 text-purple-600 mx-auto mb-4" />
+                <CardTitle className="text-xl">SMEs & Brands</CardTitle>
+                <CardDescription className="text-sm">
+                  Small to medium businesses
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-3">
+                <p className="text-sm text-gray-600 mb-4">Startups and businesses seeking cost-effective, impactful influencer collaborations.</p>
+                <Link to="/register?role=brand" className="block">
+                  <Button className="w-full bg-purple-600 hover:bg-purple-700 text-sm">
+                    Find Creators
                   </Button>
                 </Link>
               </CardContent>
             </Card>
 
             {/* Agencies */}
-            <Card className="p-8 hover:shadow-xl transition-shadow bg-white">
+            <Card className="p-6 hover:shadow-xl transition-shadow bg-white">
               <CardHeader className="text-center pb-4">
-                <BarChart3 className="h-12 w-12 text-purple-600 mx-auto mb-4" />
-                <CardTitle className="text-2xl">For Agencies</CardTitle>
-                <CardDescription className="text-lg">
-                  Manage multiple clients and campaigns at scale
+                <BarChart3 className="h-12 w-12 text-indigo-600 mx-auto mb-4" />
+                <CardTitle className="text-xl">Marketing Agencies</CardTitle>
+                <CardDescription className="text-sm">
+                  Campaign management firms
                 </CardDescription>
               </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-purple-600 rounded-full"></div>
-                  <span className="text-gray-700">Multi-client campaign management</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-purple-600 rounded-full"></div>
-                  <span className="text-gray-700">Team collaboration and permissions</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-purple-600 rounded-full"></div>
-                  <span className="text-gray-700">White-label reporting for clients</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <div className="w-2 h-2 bg-purple-600 rounded-full"></div>
-                  <span className="text-gray-700">Advanced analytics and insights</span>
-                </div>
-                <Link to="/register?role=agency" className="block pt-4">
-                  <Button className="w-full bg-purple-600 hover:bg-purple-700">
-                    Agency Solutions
+              <CardContent className="space-y-3">
+                <p className="text-sm text-gray-600 mb-4">Agencies managing influencer campaigns for multiple clients, optimizing marketing spend.</p>
+                <Link to="/register?role=agency" className="block">
+                  <Button className="w-full bg-indigo-600 hover:bg-indigo-700 text-sm">
+                    Manage Campaigns
                   </Button>
                 </Link>
               </CardContent>
@@ -263,12 +230,80 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section id="testimonials" className="py-20 px-4 bg-white">
+      {/* Core Features */}
+      <section id="features" className="py-20 px-4 bg-white">
         <div className="container mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">What Our Users Say</h2>
-            <p className="text-xl text-gray-600">Trusted by thousands of influencers and brands worldwide</p>
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">Core Platform Features</h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Everything you need for successful influencer collaborations
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <Zap className="h-10 w-10 text-purple-600 mb-2" />
+                <CardTitle>Smart Discovery</CardTitle>
+                <CardDescription>
+                  Advanced filtering by niche, engagement, audience demographics, and location for perfect matches.
+                </CardDescription>
+              </CardHeader>
+            </Card>
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <Target className="h-10 w-10 text-indigo-600 mb-2" />
+                <CardTitle>Campaign Management</CardTitle>
+                <CardDescription>
+                  Centralized dashboard for creating, tracking, and managing influencer campaigns from start to finish.
+                </CardDescription>
+              </CardHeader>
+            </Card>
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <BarChart3 className="h-10 w-10 text-purple-600 mb-2" />
+                <CardTitle>Real-Time Analytics</CardTitle>
+                <CardDescription>
+                  Track campaign performance with detailed metrics on reach, engagement, and ROI across platforms.
+                </CardDescription>
+              </CardHeader>
+            </Card>
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <MessageSquare className="h-10 w-10 text-indigo-600 mb-2" />
+                <CardTitle>Collaboration Tools</CardTitle>
+                <CardDescription>
+                  Built-in messaging, file sharing, and feedback systems for seamless brand-creator communication.
+                </CardDescription>
+              </CardHeader>
+            </Card>
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <CreditCard className="h-10 w-10 text-purple-600 mb-2" />
+                <CardTitle>Secure Payments</CardTitle>
+                <CardDescription>
+                  Automated payment processing with milestone tracking and secure contract management.
+                </CardDescription>
+              </CardHeader>
+            </Card>
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <Shield className="h-10 w-10 text-indigo-600 mb-2" />
+                <CardTitle>Portfolio Building</CardTitle>
+                <CardDescription>
+                  Professional profiles for influencers to showcase their work, audience insights, and past campaigns.
+                </CardDescription>
+              </CardHeader>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Success Stories */}
+      <section id="success-stories" className="py-20 px-4 bg-gray-50">
+        <div className="container mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">Success Stories</h2>
+            <p className="text-xl text-gray-600">Real results from our community</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <Card className="p-6">
@@ -279,7 +314,7 @@ const Index = () => {
                   ))}
                 </div>
                 <p className="text-gray-700 mb-4">
-                  "Amplyst revolutionized how I find brand partnerships. The AI matching is incredibly accurate!"
+                  "As a nano-influencer with 5K followers, I finally found brands that value authentic engagement over follower count. I've earned $2,000 in my first month!"
                 </p>
                 <div className="flex items-center">
                   <div className="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center mr-3">
@@ -287,7 +322,7 @@ const Index = () => {
                   </div>
                   <div>
                     <div className="font-semibold text-gray-900">Sarah Johnson</div>
-                    <div className="text-sm text-gray-600">Fashion Influencer</div>
+                    <div className="text-sm text-gray-600">Nano-Influencer • Beauty & Skincare</div>
                   </div>
                 </div>
               </CardContent>
@@ -300,36 +335,36 @@ const Index = () => {
                   ))}
                 </div>
                 <p className="text-gray-700 mb-4">
-                  "We've seen 300% better ROI on our campaigns since switching to Amplyst. The analytics are game-changing."
+                  "We launched our sustainable clothing line with 10 micro-influencers and saw 300% increase in sales. The ROI tracking made it easy to prove success!"
+                </p>
+                <div className="flex items-center">
+                  <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center mr-3">
+                    <span className="text-green-600 font-semibold">EW</span>
+                  </div>
+                  <div>
+                    <div className="font-semibold text-gray-900">EcoWear Team</div>
+                    <div className="text-sm text-gray-600">Sustainable Fashion Startup</div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+            <Card className="p-6">
+              <CardContent className="pt-0">
+                <div className="flex items-center mb-4">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+                  ))}
+                </div>
+                <p className="text-gray-700 mb-4">
+                  "Managing campaigns for 5 clients across 50+ micro-influencers used to be chaos. Now it's streamlined in one dashboard with detailed reporting for each client."
                 </p>
                 <div className="flex items-center">
                   <div className="w-10 h-10 bg-indigo-100 rounded-full flex items-center justify-center mr-3">
-                    <span className="text-indigo-600 font-semibold">MR</span>
+                    <span className="text-indigo-600 font-semibold">BA</span>
                   </div>
                   <div>
-                    <div className="font-semibold text-gray-900">Mike Rodriguez</div>
-                    <div className="text-sm text-gray-600">Brand Manager</div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-            <Card className="p-6">
-              <CardContent className="pt-0">
-                <div className="flex items-center mb-4">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
-                  ))}
-                </div>
-                <p className="text-gray-700 mb-4">
-                  "Managing campaigns for 20+ clients has never been easier. Amplyst saves us hours every week."
-                </p>
-                <div className="flex items-center">
-                  <div className="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center mr-3">
-                    <span className="text-purple-600 font-semibold">EC</span>
-                  </div>
-                  <div>
-                    <div className="font-semibold text-gray-900">Emily Chen</div>
-                    <div className="text-sm text-gray-600">Agency Director</div>
+                    <div className="font-semibold text-gray-900">Bright Ideas Agency</div>
+                    <div className="text-sm text-gray-600">Marketing Agency</div>
                   </div>
                 </div>
               </CardContent>
@@ -341,19 +376,21 @@ const Index = () => {
       {/* CTA Section */}
       <section className="py-20 px-4 bg-gradient-to-r from-purple-600 to-indigo-600">
         <div className="container mx-auto text-center">
-          <h2 className="text-4xl font-bold text-white mb-4">Ready to Amplify Your Success?</h2>
+          <h2 className="text-4xl font-bold text-white mb-4">Ready to Transform Your Influencer Marketing?</h2>
           <p className="text-xl text-purple-100 mb-8 max-w-2xl mx-auto">
-            Join thousands of influencers, brands, and agencies already using Amplyst to create impactful partnerships.
+            Join thousands of creators and brands building authentic partnerships that drive real results.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/register">
+            <Link to="/register?role=influencer">
               <Button size="lg" className="bg-white text-purple-600 hover:bg-gray-100 px-8">
-                Get Started Free
+                Start as Creator
               </Button>
             </Link>
-            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-purple-600 px-8">
-              Schedule Demo
-            </Button>
+            <Link to="/register?role=brand">
+              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-purple-600 px-8">
+                Find Influencers
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
@@ -370,25 +407,25 @@ const Index = () => {
                 <span className="text-xl font-bold text-white">Amplyst</span>
               </div>
               <p className="text-gray-400 text-sm">
-                The ultimate influencer marketing platform connecting creators, brands, and agencies.
+                The smart influencer collaboration platform connecting nano & micro-influencers with brands.
               </p>
             </div>
             <div>
               <h4 className="text-white font-semibold mb-4">Platform</h4>
               <ul className="space-y-2 text-sm">
-                <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Features</a></li>
+                <li><a href="#" className="text-gray-400 hover:text-white transition-colors">For Creators</a></li>
+                <li><a href="#" className="text-gray-400 hover:text-white transition-colors">For Brands</a></li>
+                <li><a href="#" className="text-gray-400 hover:text-white transition-colors">For Agencies</a></li>
                 <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Pricing</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Security</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-white transition-colors">API</a></li>
               </ul>
             </div>
             <div>
               <h4 className="text-white font-semibold mb-4">Resources</h4>
               <ul className="space-y-2 text-sm">
-                <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Blog</a></li>
+                <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Creator Guide</a></li>
+                <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Brand Playbook</a></li>
                 <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Help Center</a></li>
                 <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Community</a></li>
-                <li><a href="#" className="text-gray-400 hover:text-white transition-colors">Guides</a></li>
               </ul>
             </div>
             <div>
