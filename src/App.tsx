@@ -8,6 +8,9 @@ import Index from "./pages/Index";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import InfluencerOnboarding from "./components/onboarding/InfluencerOnboarding";
+import BrandDashboard from "./pages/BrandDashboard";
+import CampaignCreation from "./pages/CampaignCreation";
+import InfluencerDiscovery from "./pages/InfluencerDiscovery";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -23,6 +26,9 @@ const App = () => (
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/onboarding/influencer" element={<InfluencerOnboarding />} />
+          <Route path="/brand/dashboard" element={<BrandDashboard />} />
+          <Route path="/brand/campaigns/create" element={<CampaignCreation />} />
+          <Route path="/brand/discover" element={<InfluencerDiscovery />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
