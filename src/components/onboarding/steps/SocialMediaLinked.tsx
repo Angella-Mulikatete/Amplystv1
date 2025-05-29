@@ -4,9 +4,17 @@ import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { Instagram, Music, Youtube, Twitter, CheckCircle } from "lucide-react";
 
+interface SocialMediaAccount {
+  [key: string]: string;
+}
+
+interface SocialMediaData {
+  socialAccounts: SocialMediaAccount;
+}
+
 interface SocialMediaLinkedProps {
-  data: any;
-  onUpdate: (data: any) => void;
+  data: SocialMediaData;
+  onUpdate: (data: SocialMediaData) => void;
 }
 
 const SocialMediaLinked = ({ data, onUpdate }: SocialMediaLinkedProps) => {
