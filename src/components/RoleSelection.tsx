@@ -24,7 +24,7 @@ const RoleSelection = ({ onRoleSelect, selectedRole }: RoleSelectionProps) => {
         "Secure payment processing", 
         "Campaign performance tracking"
       ],
-      color: "purple"
+      gradient: "from-primary to-primary-600"
     },
     {
       id: "brand",
@@ -37,7 +37,7 @@ const RoleSelection = ({ onRoleSelect, selectedRole }: RoleSelectionProps) => {
         "Real-time ROI tracking",
         "Streamlined collaboration tools"
       ],
-      color: "indigo"
+      gradient: "from-secondary to-secondary-600"
     },
     {
       id: "agency",
@@ -50,7 +50,7 @@ const RoleSelection = ({ onRoleSelect, selectedRole }: RoleSelectionProps) => {
         "Team collaboration features",
         "White-label reporting options"
       ],
-      color: "purple"
+      gradient: "from-accent to-accent-600"
     }
   ];
 
@@ -61,37 +61,34 @@ const RoleSelection = ({ onRoleSelect, selectedRole }: RoleSelectionProps) => {
 
   return (
     <div className="w-full max-w-4xl mx-auto">
-      <div className="text-center mb-8">
-        <h2 className="text-3xl font-bold text-gray-900 mb-4">Choose Your Role</h2>
+      <div className="text-center mb-8 animate-fade-in">
+        <h2 className="text-3xl font-bold text-gray-900 mb-4 font-poppins">Choose Your Role</h2>
         <p className="text-lg text-gray-600">
           Select how you'll be using Amplyst to get the most relevant experience
         </p>
       </div>
       
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {roles.map((role) => {
+        {roles.map((role, index) => {
           const Icon = role.icon;
           const isSelected = selected === role.id;
           
           return (
             <Card
               key={role.id}
-              className={`cursor-pointer transition-all duration-200 hover:shadow-lg ${
+              className={`cursor-pointer transition-all duration-300 hover:shadow-xl hover:-translate-y-2 group ${
                 isSelected 
-                  ? `ring-2 ring-${role.color}-500 border-${role.color}-300 shadow-lg` 
-                  : 'hover:border-gray-300'
-              }`}
+                  ? 'ring-2 ring-primary border-primary shadow-lg scale-105' 
+                  : 'hover:border-primary/30'
+              } animate-scale-in`}
+              style={{ animationDelay: `${index * 0.1}s` }}
               onClick={() => handleRoleClick(role.id)}
             >
               <CardHeader className="text-center pb-4">
-                <Icon 
-                  className={`h-12 w-12 mx-auto mb-4 ${
-                    isSelected 
-                      ? `text-${role.color}-600` 
-                      : 'text-gray-400'
-                  }`} 
-                />
-                <CardTitle className={`text-xl ${isSelected ? `text-${role.color}-900` : ''}`}>
+                <div className={`w-16 h-16 mx-auto mb-4 rounded-full bg-gradient-to-r ${role.gradient} flex items-center justify-center transition-transform duration-300 group-hover:scale-110`}>
+                  <Icon className="h-8 w-8 text-white" />
+                </div>
+                <CardTitle className={`text-xl font-poppins ${isSelected ? 'text-primary' : 'group-hover:text-primary'} transition-colors duration-300`}>
                   {role.title}
                 </CardTitle>
                 <CardDescription className="text-sm">
@@ -99,11 +96,11 @@ const RoleSelection = ({ onRoleSelect, selectedRole }: RoleSelectionProps) => {
                 </CardDescription>
               </CardHeader>
               <CardContent>
-                <div className="space-y-2">
+                <div className="space-y-3">
                   {role.benefits.map((benefit, index) => (
-                    <div key={index} className="flex items-start space-x-2">
-                      <div className={`w-1.5 h-1.5 rounded-full mt-2 ${
-                        isSelected ? `bg-${role.color}-500` : 'bg-gray-400'
+                    <div key={index} className="flex items-start space-x-3">
+                      <div className={`w-2 h-2 rounded-full mt-2 transition-colors duration-300 ${
+                        isSelected ? 'bg-primary' : 'bg-gray-400 group-hover:bg-primary'
                       }`}></div>
                       <span className="text-sm text-gray-600">{benefit}</span>
                     </div>
@@ -111,7 +108,7 @@ const RoleSelection = ({ onRoleSelect, selectedRole }: RoleSelectionProps) => {
                 </div>
                 {isSelected && (
                   <Button 
-                    className={`w-full mt-4 bg-${role.color}-600 hover:bg-${role.color}-700`}
+                    className={`w-full mt-6 bg-gradient-to-r ${role.gradient} hover:opacity-90 text-white animate-fade-in font-poppins font-medium`}
                     onClick={(e) => {
                       e.stopPropagation();
                       onRoleSelect(role.id);
