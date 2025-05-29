@@ -175,9 +175,9 @@ const PortfolioSetup = ({ data, onUpdate }: PortfolioSetupProps) => {
                     <p className="text-sm text-gray-600 mb-2">{item.description}</p>
                     <div className="flex space-x-4 text-xs text-gray-500">
                       {Object.entries(item.metrics).map(([key, value]) => (
-                        value && (
+                        value && typeof value === 'string' && value.trim() !== '' && (
                           <span key={key} className="capitalize">
-                            {key}: {value}
+                            {key}: {String(value)}
                           </span>
                         )
                       ))}
