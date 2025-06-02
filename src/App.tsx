@@ -12,8 +12,13 @@ import BrandDashboard from "./pages/BrandDashboard";
 import CampaignCreation from "./pages/CampaignCreation";
 import InfluencerDiscovery from "./pages/InfluencerDiscovery";
 import NotFound from "./pages/NotFound";
+import { ConvexProvider, ConvexReactClient } from "convex/react";
+import InfluencerDashboard from "./pages/InfluencerDashboard";
+import AdminDashboard from "./pages/AdminDashboard";
 
 const queryClient = new QueryClient();
+
+
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
@@ -29,6 +34,8 @@ const App = () => (
           <Route path="/brand/dashboard" element={<BrandDashboard />} />
           <Route path="/brand/campaigns/create" element={<CampaignCreation />} />
           <Route path="/brand/discover" element={<InfluencerDiscovery />} />
+          <Route path="/influencer/dashboard" element={<InfluencerDashboard />} />
+          <Route path="/admin/dashboard" element={<AdminDashboard />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

@@ -7,19 +7,24 @@ import { Button } from "@/components/ui/button";
 import { Instagram, Music, Youtube, Twitter, CheckCircle, Loader2 } from "lucide-react";
 import { runTikTokActor, TikTokProfileData } from '@/services/tiktokService';
 import axios from "axios";
+import { InstagramProfileData, runInstagramActor } from "@/services/instagramService";
 
 const APIFY_TOKEN = "apify_api_7duCuWXWiRN2DJNi5aEVSalzmMhEc12ijzrz";
 const ACTOR_ID = "urbACh26VF8yHR72m"; 
 
-interface SocialMediaAccount {
-  [key: string]: string;
+export interface SocialMediaAccount {
+  instagram: string;
+  tiktok: string;
+  youtube: string;
+  twitter: string;
 }
 
-interface SocialMediaProfileData {
+export interface SocialMediaProfileData {
   tiktok?: TikTokProfileData;
+  instagram?: InstagramProfileData;
 }
 
-interface SocialMediaData {
+export interface SocialMediaData {
   socialAccounts: SocialMediaAccount;
   profileData?: SocialMediaProfileData;
 }
@@ -33,6 +38,7 @@ const SocialMediaLinked = ({ data, onUpdate }: SocialMediaLinkedProps) => {
   const [loading, setLoading] = useState<Record<string, boolean>>({});
   const [error, setError] = useState<Record<string, string>>({});
   const [profileData, setProfileData] = useState<TikTokProfileData | null>(null);
+   const [instaProfileData, setInstaProfileData] = useState<InstagramProfileData | null>(null);
 
   const updateSocialAccount = (platform: string, value: string) => {
     onUpdate({
@@ -107,6 +113,32 @@ const SocialMediaLinked = ({ data, onUpdate }: SocialMediaLinkedProps) => {
     }
   }
 
+   async function verifyInsta(username: string) {
+    setLoading(prev => ({ ...prev, instagram: true }));
+    setError(prev => ({ ...prev, instagram: '' }));
+
+    try {
+      const profiles = await runInstagramActor(username);
+      console.log("Instagram Profiles in socialMedia links:", profiles);
+      console.log("Instagram Profiles[0] in socialMedia links:", profiles[0]);
+      
+      if (profiles.length === 0) {
+        setError(prev => ({ ...prev, instagram: "No profile found for this username." }));
+      } else {
+        updateSocialAccount("instagram", username);
+        setInstaProfileData(profiles[0]); 
+      }
+    } catch (e: unknown) {
+      if (e instanceof Error) {
+        setError(prev => ({ ...prev, tiktok: e.message || "Error verifying TikTok profile" }));
+      } else {
+        setError(prev => ({ ...prev, tiktok: "An unknown error occurred during TikTok verification." }));
+      }
+    } finally {
+      setLoading(prev => ({ ...prev, tiktok: false }));
+    }
+  }
+
   const socialPlatforms = [
     {
       id: "instagram",
@@ -114,7 +146,7 @@ const SocialMediaLinked = ({ data, onUpdate }: SocialMediaLinkedProps) => {
       icon: Instagram,
       placeholder: "@yourusername",
       color: "text-pink-600",
-      verifyAction: (username: string) => verifyAccount("instagram", username),
+      verifyAction: verifyInsta,
     },
     {
       id: "tiktok", 

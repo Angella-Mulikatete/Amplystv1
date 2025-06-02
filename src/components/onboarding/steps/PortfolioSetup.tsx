@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -7,13 +6,31 @@ import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
 import { Upload, Plus, X, Image, Video, FileText } from "lucide-react";
 
-interface PortfolioSetupProps {
-  data: any;
-  onUpdate: (data: any) => void;
+export interface PortfolioItem {
+  id?: number;
+  type: "image" | "video" | "story";
+  title: string;
+  description: string;
+  url: string;
+  metrics: {
+    views: string;
+    likes: string;
+    comments: string;
+    shares: string;
+  };
 }
 
-const PortfolioSetup = ({ data, onUpdate }: PortfolioSetupProps) => {
-  const [newItem, setNewItem] = useState({
+type PortfolioItemWithoutId = Omit<PortfolioItem, 'id'>;
+
+interface PortfolioSetupProps {
+  data: {
+    portfolio?: PortfolioItem[];
+  };
+  onUpdate: (data: { portfolio: PortfolioItem[] }) => void;
+}
+
+const PortfolioSetup: React.FC<PortfolioSetupProps> = ({ data, onUpdate }) => {
+  const [newItem, setNewItem] = useState<PortfolioItemWithoutId>({
     type: "image",
     title: "",
     description: "",
@@ -43,7 +60,7 @@ const PortfolioSetup = ({ data, onUpdate }: PortfolioSetupProps) => {
 
   const removePortfolioItem = (id: number) => {
     onUpdate({
-      portfolio: data.portfolio.filter((item: any) => item.id !== id)
+      portfolio: data.portfolio.filter((item: PortfolioItem) => item.id !== id)
     });
   };
 
@@ -51,7 +68,7 @@ const PortfolioSetup = ({ data, onUpdate }: PortfolioSetupProps) => {
     { value: "image", label: "Image Post", icon: Image },
     { value: "video", label: "Video Content", icon: Video },
     { value: "story", label: "Story/Reel", icon: FileText }
-  ];
+  ] as const;
 
   return (
     <div className="space-y-6 animate-fade-in">
@@ -161,7 +178,7 @@ const PortfolioSetup = ({ data, onUpdate }: PortfolioSetupProps) => {
       {data.portfolio && data.portfolio.length > 0 && (
         <div className="space-y-3">
           <h4 className="font-medium text-gray-900">Your Portfolio ({data.portfolio.length} items)</h4>
-          {data.portfolio.map((item: any) => (
+          {data.portfolio.map((item: PortfolioItem) => (
             <Card key={item.id} className="hover:shadow-md transition-shadow duration-200">
               <CardContent className="p-4">
                 <div className="flex justify-between items-start">

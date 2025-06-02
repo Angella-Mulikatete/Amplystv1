@@ -238,6 +238,7 @@ const CampaignCreation = () => {
                         type="button"
                         onClick={() => removeGoal(goal)}
                         className="ml-1 hover:text-red-500"
+                        title={`Remove goal: ${goal}`}
                       >
                         <X className="h-3 w-3" />
                       </button>

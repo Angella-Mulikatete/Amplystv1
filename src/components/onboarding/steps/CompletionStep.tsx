@@ -2,12 +2,23 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { CheckCircle, Users, Target, TrendingUp, Star } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+
+interface OnboardingData {
+  firstName: string;
+  lastName: string;
+  niche: string;
+  role: string;
+  followerCount: string;
+  location: string;
+}
 
 interface CompletionStepProps {
-  data: any;
+  data: OnboardingData;
 }
 
 const CompletionStep = ({ data }: CompletionStepProps) => {
+  const navigate = useNavigate();
   const features = [
     {
       icon: Target,
@@ -30,6 +41,10 @@ const CompletionStep = ({ data }: CompletionStepProps) => {
       description: "Build your creator portfolio and increase your earning potential"
     }
   ];
+
+  const handleComplete = async () => {
+    navigate("/influencer/dashboard");
+  };
 
   return (
     <div className="space-y-6 animate-fade-in text-center">
@@ -95,7 +110,9 @@ const CompletionStep = ({ data }: CompletionStepProps) => {
       </div>
 
       <div className="space-y-3">
-        <Button className="w-full bg-gradient-to-r from-primary to-secondary hover:opacity-90 text-white font-poppins">
+        <Button 
+            className="w-full bg-gradient-to-r from-primary to-secondary hover:opacity-90 text-white font-poppins"
+            onClick={handleComplete}>
           Go to Dashboard
         </Button>
         <Button variant="outline" className="w-full">

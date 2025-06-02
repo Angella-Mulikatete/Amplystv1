@@ -17,6 +17,7 @@ export default defineConfig(({ mode }) => ({
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
+      "convex/_generated/api": path.resolve(__dirname, "./convex/_generated/api.js"),
     },
   },
 }));

@@ -1,51 +1,57 @@
-
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Star, Users, TrendingUp, MessageSquare, CreditCard, Zap, Target, BarChart3, Shield, CheckCircle } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link , useNavigate} from "react-router-dom";
+import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/clerk-react";
 
 const Index = () => {
+    const navigate = useNavigate();
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-indigo-100">
+    <div className="min-h-screen bg-gradient-to-br from-[#3A7CA5]/10 to-[#88B04B]/10">
       {/* Navigation */}
       <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-lg flex items-center justify-center">
+            <div className="w-8 h-8 bg-gradient-to-r from-[#3A7CA5] to-[#88B04B] rounded-lg flex items-center justify-center">
               <span className="text-white font-bold text-sm">A</span>
             </div>
             <span className="text-xl font-bold text-gray-900">Amplyst</span>
           </div>
           <div className="hidden md:flex items-center space-x-8">
-            <a href="#features" className="text-gray-600 hover:text-purple-600 transition-colors">Features</a>
-            <a href="#how-it-works" className="text-gray-600 hover:text-purple-600 transition-colors">How It Works</a>
-            <a href="#success-stories" className="text-gray-600 hover:text-purple-600 transition-colors">Success Stories</a>
+            <a href="#features" className="text-gray-600 hover:text-[#3A7CA5] transition-colors">Features</a>
+            <a href="#how-it-works" className="text-gray-600 hover:text-[#3A7CA5] transition-colors">How It Works</a>
+            <a href="#success-stories" className="text-gray-600 hover:text-[#3A7CA5] transition-colors">Success Stories</a>
           </div>
           <div className="flex items-center space-x-4">
-            <Link to="/login">
-              <Button variant="ghost" className="text-gray-600 hover:text-purple-600">
-                Sign In
-              </Button>
-            </Link>
-            <Link to="/register">
-              <Button className="bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700">
-                Get Started
-              </Button>
-            </Link>
+            <SignedOut>
+              {/* <SignInButton mode="modal">
+                <Button variant="ghost"  className="text-gray-600 hover:text-[#3A7CA5]">
+                  Sign In
+                </Button>
+              </SignInButton> */}
+               <Button className="bg-gradient-to-r from-[#3A7CA5] to-[#88B04B] hover:from-[#3A7CA5]/90 hover:to-[#88B04B]/90" onClick={() => navigate("/register")}>
+                  Get Started
+                </Button>
+          
+          </SignedOut>
+          <SignedIn>
+            <UserButton afterSignOutUrl="/" />
+          </SignedIn>
           </div>
+     
         </div>
       </nav>
 
       {/* Hero Section */}
       <section className="py-20 px-4">
         <div className="container mx-auto text-center">
-          <Badge className="mb-6 bg-purple-100 text-purple-700 hover:bg-purple-100">
+          <Badge className="mb-6 bg-[#3A7CA5]/10 text-[#3A7CA5] hover:bg-[#3A7CA5]/10">
             🚀 Smart Influencer Collaboration Platform
           </Badge>
           <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
             Connect Small Brands with 
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-indigo-600">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#3A7CA5] to-[#88B04B]">
               {" "}Nano & Micro Influencers
             </span>
           </h1>
@@ -55,27 +61,27 @@ const Index = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
             <Link to="/register?role=influencer">
-              <Button size="lg" className="bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 px-8">
+              <Button size="lg" className="bg-gradient-to-r from-[#3A7CA5] to-[#88B04B] hover:from-[#3A7CA5]/90 hover:to-[#88B04B]/90 px-8">
                 Join as Creator
               </Button>
             </Link>
             <Link to="/register?role=brand">
-              <Button size="lg" variant="outline" className="border-purple-300 text-purple-700 hover:bg-purple-50 px-8">
+              <Button size="lg" variant="outline" className="border-[#3A7CA5] text-[#3A7CA5] hover:bg-[#3A7CA5]/10 px-8">
                 Find Influencers
               </Button>
             </Link>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
             <div className="text-center">
-              <div className="text-3xl font-bold text-purple-600">1K-100K</div>
+              <div className="text-3xl font-bold text-[#3A7CA5]">1K-100K</div>
               <div className="text-gray-600">Follower Range Focus</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-indigo-600">SMEs</div>
+              <div className="text-3xl font-bold text-[#88B04B]">SMEs</div>
               <div className="text-gray-600">& Startups Supported</div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold text-purple-600">5%+</div>
+              <div className="text-3xl font-bold text-[#E19629]">5%+</div>
               <div className="text-gray-600">Avg Engagement Rate</div>
             </div>
           </div>
@@ -118,23 +124,23 @@ const Index = () => {
             </Card>
             <Card className="p-8">
               <CardHeader>
-                <CardTitle className="text-2xl text-green-600 mb-4">Our Solution</CardTitle>
+                <CardTitle className="text-2xl text-[#88B04B] mb-4">Our Solution</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="flex items-start space-x-3">
-                  <CheckCircle className="w-5 h-5 text-green-500 mt-1" />
+                  <CheckCircle className="w-5 h-5 text-[#88B04B] mt-1" />
                   <span className="text-gray-700">Curated discovery of nano & micro influencers</span>
                 </div>
                 <div className="flex items-start space-x-3">
-                  <CheckCircle className="w-5 h-5 text-green-500 mt-1" />
+                  <CheckCircle className="w-5 h-5 text-[#88B04B] mt-1" />
                   <span className="text-gray-700">Centralized campaign management platform</span>
                 </div>
                 <div className="flex items-start space-x-3">
-                  <CheckCircle className="w-5 h-5 text-green-500 mt-1" />
+                  <CheckCircle className="w-5 h-5 text-[#88B04B] mt-1" />
                   <span className="text-gray-700">Real-time analytics and performance tracking</span>
                 </div>
                 <div className="flex items-start space-x-3">
-                  <CheckCircle className="w-5 h-5 text-green-500 mt-1" />
+                  <CheckCircle className="w-5 h-5 text-[#88B04B] mt-1" />
                   <span className="text-gray-700">Professional tools for smaller creators to grow</span>
                 </div>
               </CardContent>
@@ -144,7 +150,7 @@ const Index = () => {
       </section>
 
       {/* Personas Section */}
-      <section className="py-20 px-4 bg-gradient-to-br from-purple-50 to-indigo-50">
+      <section className="py-20 px-4 bg-gradient-to-br from-[#3A7CA5]/5 to-[#88B04B]/5">
         <div className="container mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">Built for You</h2>
@@ -154,7 +160,7 @@ const Index = () => {
             {/* Nano Influencers */}
             <Card className="p-6 hover:shadow-xl transition-shadow bg-white">
               <CardHeader className="text-center pb-4">
-                <Users className="h-12 w-12 text-purple-600 mx-auto mb-4" />
+                <Users className="h-12 w-12 text-[#3A7CA5] mx-auto mb-4" />
                 <CardTitle className="text-xl">Nano-Influencers</CardTitle>
                 <CardDescription className="text-sm">
                   1K-10K followers
@@ -163,7 +169,7 @@ const Index = () => {
               <CardContent className="space-y-3">
                 <p className="text-sm text-gray-600 mb-4">Eager to monetize influence and build brand presence with highly engaged, close-knit audiences.</p>
                 <Link to="/register?role=influencer" className="block">
-                  <Button className="w-full bg-purple-600 hover:bg-purple-700 text-sm">
+                  <Button className="w-full bg-[#3A7CA5] hover:bg-[#3A7CA5]/90 text-sm">
                     Start Earning
                   </Button>
                 </Link>
@@ -173,7 +179,7 @@ const Index = () => {
             {/* Micro Influencers */}
             <Card className="p-6 hover:shadow-xl transition-shadow bg-white">
               <CardHeader className="text-center pb-4">
-                <TrendingUp className="h-12 w-12 text-indigo-600 mx-auto mb-4" />
+                <TrendingUp className="h-12 w-12 text-[#88B04B] mx-auto mb-4" />
                 <CardTitle className="text-xl">Micro-Influencers</CardTitle>
                 <CardDescription className="text-sm">
                   10K-100K followers
@@ -182,7 +188,7 @@ const Index = () => {
               <CardContent className="space-y-3">
                 <p className="text-sm text-gray-600 mb-4">Established creators with niche communities, trusted voices in specific interest areas.</p>
                 <Link to="/register?role=influencer" className="block">
-                  <Button className="w-full bg-indigo-600 hover:bg-indigo-700 text-sm">
+                  <Button className="w-full bg-[#88B04B] hover:bg-[#88B04B]/90 text-sm">
                     Scale Partnerships
                   </Button>
                 </Link>
@@ -192,7 +198,7 @@ const Index = () => {
             {/* SMEs & Brands */}
             <Card className="p-6 hover:shadow-xl transition-shadow bg-white">
               <CardHeader className="text-center pb-4">
-                <Target className="h-12 w-12 text-purple-600 mx-auto mb-4" />
+                <Target className="h-12 w-12 text-[#E19629] mx-auto mb-4" />
                 <CardTitle className="text-xl">SMEs & Brands</CardTitle>
                 <CardDescription className="text-sm">
                   Small to medium businesses
@@ -201,7 +207,7 @@ const Index = () => {
               <CardContent className="space-y-3">
                 <p className="text-sm text-gray-600 mb-4">Startups and businesses seeking cost-effective, impactful influencer collaborations.</p>
                 <Link to="/register?role=brand" className="block">
-                  <Button className="w-full bg-purple-600 hover:bg-purple-700 text-sm">
+                  <Button className="w-full bg-[#3A7CA5] hover:bg-[#3A7CA5]/90 text-sm">
                     Find Creators
                   </Button>
                 </Link>
@@ -211,7 +217,7 @@ const Index = () => {
             {/* Agencies */}
             <Card className="p-6 hover:shadow-xl transition-shadow bg-white">
               <CardHeader className="text-center pb-4">
-                <BarChart3 className="h-12 w-12 text-indigo-600 mx-auto mb-4" />
+                <BarChart3 className="h-12 w-12 text-[#88B04B] mx-auto mb-4" />
                 <CardTitle className="text-xl">Marketing Agencies</CardTitle>
                 <CardDescription className="text-sm">
                   Campaign management firms
@@ -220,7 +226,7 @@ const Index = () => {
               <CardContent className="space-y-3">
                 <p className="text-sm text-gray-600 mb-4">Agencies managing influencer campaigns for multiple clients, optimizing marketing spend.</p>
                 <Link to="/register?role=agency" className="block">
-                  <Button className="w-full bg-indigo-600 hover:bg-indigo-700 text-sm">
+                  <Button className="w-full bg-[#E19629] hover:bg-[#E19629]/90 text-sm">
                     Manage Campaigns
                   </Button>
                 </Link>
@@ -242,7 +248,7 @@ const Index = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <Card className="hover:shadow-lg transition-shadow">
               <CardHeader>
-                <Zap className="h-10 w-10 text-purple-600 mb-2" />
+                <Zap className="h-10 w-10 text-[#3A7CA5] mb-2" />
                 <CardTitle>Smart Discovery</CardTitle>
                 <CardDescription>
                   Advanced filtering by niche, engagement, audience demographics, and location for perfect matches.
@@ -251,7 +257,7 @@ const Index = () => {
             </Card>
             <Card className="hover:shadow-lg transition-shadow">
               <CardHeader>
-                <Target className="h-10 w-10 text-indigo-600 mb-2" />
+                <Target className="h-10 w-10 text-[#88B04B] mb-2" />
                 <CardTitle>Campaign Management</CardTitle>
                 <CardDescription>
                   Centralized dashboard for creating, tracking, and managing influencer campaigns from start to finish.
@@ -260,7 +266,7 @@ const Index = () => {
             </Card>
             <Card className="hover:shadow-lg transition-shadow">
               <CardHeader>
-                <BarChart3 className="h-10 w-10 text-purple-600 mb-2" />
+                <BarChart3 className="h-10 w-10 text-[#E19629] mb-2" />
                 <CardTitle>Real-Time Analytics</CardTitle>
                 <CardDescription>
                   Track campaign performance with detailed metrics on reach, engagement, and ROI across platforms.
@@ -269,7 +275,7 @@ const Index = () => {
             </Card>
             <Card className="hover:shadow-lg transition-shadow">
               <CardHeader>
-                <MessageSquare className="h-10 w-10 text-indigo-600 mb-2" />
+                <MessageSquare className="h-10 w-10 text-[#3A7CA5] mb-2" />
                 <CardTitle>Collaboration Tools</CardTitle>
                 <CardDescription>
                   Built-in messaging, file sharing, and feedback systems for seamless brand-creator communication.
@@ -278,7 +284,7 @@ const Index = () => {
             </Card>
             <Card className="hover:shadow-lg transition-shadow">
               <CardHeader>
-                <CreditCard className="h-10 w-10 text-purple-600 mb-2" />
+                <CreditCard className="h-10 w-10 text-[#88B04B] mb-2" />
                 <CardTitle>Secure Payments</CardTitle>
                 <CardDescription>
                   Automated payment processing with milestone tracking and secure contract management.
@@ -287,7 +293,7 @@ const Index = () => {
             </Card>
             <Card className="hover:shadow-lg transition-shadow">
               <CardHeader>
-                <Shield className="h-10 w-10 text-indigo-600 mb-2" />
+                <Shield className="h-10 w-10 text-[#E19629] mb-2" />
                 <CardTitle>Portfolio Building</CardTitle>
                 <CardDescription>
                   Professional profiles for influencers to showcase their work, audience insights, and past campaigns.
@@ -317,8 +323,8 @@ const Index = () => {
                   "As a nano-influencer with 5K followers, I finally found brands that value authentic engagement over follower count. I've earned $2,000 in my first month!"
                 </p>
                 <div className="flex items-center">
-                  <div className="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center mr-3">
-                    <span className="text-purple-600 font-semibold">SJ</span>
+                  <div className="w-10 h-10 bg-[#3A7CA5]/10 rounded-full flex items-center justify-center mr-3">
+                    <span className="text-[#3A7CA5] font-semibold">SJ</span>
                   </div>
                   <div>
                     <div className="font-semibold text-gray-900">Sarah Johnson</div>
@@ -338,8 +344,8 @@ const Index = () => {
                   "We launched our sustainable clothing line with 10 micro-influencers and saw 300% increase in sales. The ROI tracking made it easy to prove success!"
                 </p>
                 <div className="flex items-center">
-                  <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center mr-3">
-                    <span className="text-green-600 font-semibold">EW</span>
+                  <div className="w-10 h-10 bg-[#88B04B]/10 rounded-full flex items-center justify-center mr-3">
+                    <span className="text-[#88B04B] font-semibold">EW</span>
                   </div>
                   <div>
                     <div className="font-semibold text-gray-900">EcoWear Team</div>
@@ -359,8 +365,8 @@ const Index = () => {
                   "Managing campaigns for 5 clients across 50+ micro-influencers used to be chaos. Now it's streamlined in one dashboard with detailed reporting for each client."
                 </p>
                 <div className="flex items-center">
-                  <div className="w-10 h-10 bg-indigo-100 rounded-full flex items-center justify-center mr-3">
-                    <span className="text-indigo-600 font-semibold">BA</span>
+                  <div className="w-10 h-10 bg-[#E19629]/10 rounded-full flex items-center justify-center mr-3">
+                    <span className="text-[#E19629] font-semibold">BA</span>
                   </div>
                   <div>
                     <div className="font-semibold text-gray-900">Bright Ideas Agency</div>
@@ -374,20 +380,20 @@ const Index = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 px-4 bg-gradient-to-r from-purple-600 to-indigo-600">
+      <section className="py-20 px-4 bg-gradient-to-r from-[#3A7CA5] to-[#88B04B]">
         <div className="container mx-auto text-center">
           <h2 className="text-4xl font-bold text-white mb-4">Ready to Transform Your Influencer Marketing?</h2>
-          <p className="text-xl text-purple-100 mb-8 max-w-2xl mx-auto">
+          <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
             Join thousands of creators and brands building authentic partnerships that drive real results.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link to="/register?role=influencer">
-              <Button size="lg" className="bg-white text-purple-600 hover:bg-gray-100 px-8">
+              <Button size="lg" className="bg-white text-[#3A7CA5] hover:bg-gray-100 px-8">
                 Start as Creator
               </Button>
             </Link>
             <Link to="/register?role=brand">
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-purple-600 px-8">
+              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-[#3A7CA5] px-8">
                 Find Influencers
               </Button>
             </Link>
@@ -401,7 +407,7 @@ const Index = () => {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div>
               <div className="flex items-center space-x-2 mb-4">
-                <div className="w-8 h-8 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-lg flex items-center justify-center">
+                <div className="w-8 h-8 bg-gradient-to-r from-[#3A7CA5] to-[#88B04B] rounded-lg flex items-center justify-center">
                   <span className="text-white font-bold text-sm">A</span>
                 </div>
                 <span className="text-xl font-bold text-white">Amplyst</span>

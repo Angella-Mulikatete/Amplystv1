@@ -8,13 +8,36 @@ import BasicInfo from "./steps/BasicInfo";
 import SocialMediaLinked from "./steps/SocialMediaLinked";
 import PortfolioSetup from "./steps/PortfolioSetup";
 import CompletionStep from "./steps/CompletionStep";
+import { useMutation } from "convex/react";
+import { api } from "convex/_generated/api";
+import { useNavigate } from "react-router-dom";
+import { useUser } from "@clerk/clerk-react";
+import { SocialMediaData, SocialMediaAccount, SocialMediaProfileData } from "./steps/SocialMediaLinked";
+import { PortfolioItem } from "./steps/PortfolioSetup";
+import { useConvexUserSync } from "@/hooks/useConvexSync";
+
+
+interface InfluencerFormData {
+  firstName: string;
+  lastName: string;
+  role: string;
+  bio: string;
+  niche: string;
+  location: string;
+  followerCount: string;
+  socialAccounts: SocialMediaAccount;
+  portfolio: PortfolioItem[];
+  profileData?: SocialMediaProfileData;
+}
+
 
 const InfluencerOnboarding = () => {
   const [currentStep, setCurrentStep] = useState(1);
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<InfluencerFormData>({
     firstName: "",
     lastName: "",
     bio: "",
+    role: "",
     niche: "",
     location: "",
     followerCount: "",
@@ -24,8 +47,15 @@ const InfluencerOnboarding = () => {
       youtube: "",
       twitter: ""
     },
-    portfolio: []
+    portfolio: [],
+    profileData: {
+      tiktok: undefined // Initialize profileData with tiktok as undefined
+    }
   });
+  const insertProfile = useMutation(api.users.insertProfile);
+  const { user } = useUser();
+  const navigate = useNavigate();
+  useConvexUserSync();
 
   const totalSteps = 4;
   const progress = (currentStep / totalSteps) * 100;
@@ -42,7 +72,7 @@ const InfluencerOnboarding = () => {
     }
   };
 
-  const updateFormData = (data: any) => {
+  const updateFormData = (data: Partial<InfluencerFormData>) => {
     setFormData(prev => ({ ...prev, ...data }));
   };
 
@@ -61,10 +91,33 @@ const InfluencerOnboarding = () => {
     }
   };
 
+  const handleComplete = async () => {
+    try {
+      // Compose the profile data from formData
+      await insertProfile({
+        role: "influencer",
+        name: `${formData.firstName} ${formData.lastName}`,
+        bio: formData.bio,
+        profilePictureUrl: user?.imageUrl,
+        niche: formData.niche,
+        location: formData.location,
+        followerCount: formData.followerCount,
+        socialAccounts: formData.socialAccounts,
+        portfolio: formData.portfolio,
+        // Add more fields as needed, matching your Convex schema
+      });
+      navigate("/influencer/dashboard");
+    } catch (err) {
+      // Handle error (show toast, etc.)
+      console.error("Failed to save profile:", err);
+    }
+  };
+
+
   const stepTitles = [
     "Basic Information",
     "Social Media Accounts",
-    "Portfolio Setup", 
+    "Portfolio Setup",
     "Complete Setup"
   ];
 
@@ -115,10 +168,7 @@ const InfluencerOnboarding = () => {
             ) : (
               <Button
                 className="bg-secondary hover:bg-secondary-600"
-                onClick={() => {
-                  console.log("Profile completed:", formData);
-                  // Handle completion logic here
-                }}
+                onClick={handleComplete}
               >
                 Complete Setup
               </Button>

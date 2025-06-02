@@ -4,9 +4,18 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
+interface BasicInfoData {
+  firstName: string;
+  lastName: string;
+  bio: string;
+  niche: string;
+  followerCount: string;
+  location: string;
+}
+
 interface BasicInfoProps {
-  data: any;
-  onUpdate: (data: any) => void;
+  data: BasicInfoData;
+  onUpdate: (data: Partial<BasicInfoData>) => void;
 }
 
 const BasicInfo = ({ data, onUpdate }: BasicInfoProps) => {
