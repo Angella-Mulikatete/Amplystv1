@@ -23,9 +23,9 @@ createRoot(document.getElementById("root")!)
         //     <App />
         // </ConvexClientProvider>
     <ClerkProvider publishableKey={PUBLISHABLE_KEY} afterSignOutUrl="/">
-        <ConvexProviderWithClerk client={convex} useAuth={useAuth}>
-              <App />
-        </ConvexProviderWithClerk>
+      <ConvexProviderWithClerk client={convex} useAuth={useAuth}>
+        <App />
+      </ConvexProviderWithClerk>
       
     </ClerkProvider>
 );
