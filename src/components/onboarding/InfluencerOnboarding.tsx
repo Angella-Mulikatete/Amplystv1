@@ -93,7 +93,9 @@ const InfluencerOnboarding = () => {
 
   const handleComplete = async () => {
     try {
+
       console.log("Submitting profile data:", formData);
+
       // Compose the profile data from formData
       await insertProfile({
         role: "influencer",
