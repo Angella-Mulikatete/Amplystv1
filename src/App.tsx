@@ -7,7 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import InfluencerOnboarding from "./components/onboarding/InfluencerOnboarding";
+import InfluencerOnboarding from "./pages/InfluencerOnboarding";
 import BrandDashboard from "./pages/BrandDashboard";
 import CampaignCreation from "./pages/CampaignCreation";
 import InfluencerDiscovery from "./pages/InfluencerDiscovery";
